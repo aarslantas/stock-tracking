@@ -5,7 +5,9 @@ const pubsub = new PubSub();
 
 const resolvers = {
   Query: {
-    products: () => Product.find(),
+    products: async () => {
+      return await Product.find({});
+    },
   },
   Mutation: {
     addProduct: async (_, { name, description, price, quantity }) => {
