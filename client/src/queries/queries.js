@@ -21,14 +21,29 @@ export const ADD_PRODUCTS = gql`
   }
 `;
 
+export const ADD_CATEGORY = gql`
+  mutation ($name: String!) {
+    addCategory(name: $name) {
+      name
+    }
+  }
+`;
+
 export const GET_PRODUCTS = gql`
   query {
     products {
-      id
       name
       description
       price
       quantity
+    }
+  }
+`;
+
+export const GET_CATEGORIES = gql`
+  query {
+    categories {
+      name
     }
   }
 `;
@@ -40,6 +55,14 @@ export const PRODUCT_ADDED = gql`
       description
       price
       quantity
+    }
+  }
+`;
+
+export const CATEGORY_ADDED = gql`
+  subscription {
+    category_added {
+      name
     }
   }
 `;

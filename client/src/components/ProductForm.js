@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { ADD_PRODUCTS } from "../queries/queries";
+import { useSubscription, useMutation } from "@apollo/client";
+import { ADD_PRODUCTS, PRODUCT_ADDED } from "../queries/queries";
 
 function ProductForm() {
   const [name, setName] = useState("");
@@ -9,6 +9,9 @@ function ProductForm() {
   const [quantity, setQuantity] = useState(0);
 
   const [addProduct] = useMutation(ADD_PRODUCTS);
+
+  const { data } = useSubscription(PRODUCT_ADDED, { fetchPolicy: "no-cache" });
+  console.log(data);
 
   const handleSubmit = (e) => {
     e.preventDefault();
