@@ -1,3 +1,4 @@
+import CategoryForm from "./components/CategoryForm";
 import ProductForm from "./components/ProductForm";
 import ProductList from "./components/ProductList";
 
@@ -99,6 +100,7 @@ function App() {
 
       <div class="p-4 sm:ml-64">
         <ProductForm />
+        <CategoryForm />
         <ProductList />
       </div>
     </>

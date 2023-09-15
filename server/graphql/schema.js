@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
   type Product {
@@ -9,8 +9,14 @@ const typeDefs = gql`
     quantity: Int!
   }
 
+  type Category {
+    id: ID!
+    name: String!
+  }
+
   type Query {
     products: [Product]
+    categories: [Category]
   }
 
   type Mutation {
@@ -20,12 +26,15 @@ const typeDefs = gql`
       price: Float!
       quantity: Int!
     ): Product
+
+    addCategory(name: String!): Category
   }
 
   type Subscription {
     productAdded: Product
+    categoryAdded: Category
     stockUpdated(productId: ID!): Product
   }
 `;
 
-module.exports = typeDefs;
+export default typeDefs;
